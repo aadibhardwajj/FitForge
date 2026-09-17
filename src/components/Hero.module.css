@@ -1,0 +1,162 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(59,130,246,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 60%, rgba(139,92,246,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(6,182,212,0.1) 0%, transparent 60%),
+    linear-gradient(180deg, #080c14 0%, #0a1020 50%, #080c14 100%);
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-20px) scale(1.5); opacity: 0; }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 760px;
+  padding: 0 24px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(59,130,246,0.12);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #93c5fd;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: fadeInDown 0.6s ease both;
+}
+.badgeDot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #3b82f6;
+  box-shadow: 0 0 10px #3b82f6;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.4); opacity: 0.7; }
+}
+
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(44px, 7vw, 82px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #f1f5f9;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.7s ease 0.1s both;
+}
+.subtitle {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #94a3b8;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.7s ease 0.2s both;
+}
+.actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+  animation: fadeInUp 0.7s ease 0.3s both;
+}
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btnPrimary:hover { transform: translateY(-3px); box-shadow: 0 20px 60px rgba(59,130,246,0.5); }
+.btnGhost {
+  padding: 16px 36px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50px;
+  color: #94a3b8;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+.btnGhost:hover { background: rgba(255,255,255,0.08); color: #f1f5f9; transform: translateY(-2px); }
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  animation: fadeInUp 0.7s ease 0.4s both;
+}
+.stat { text-align: center; }
+.statNum {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.statLabel { font-size: 12px; font-weight: 500; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; }
+.statDivider { width: 1px; height: 40px; background: rgba(255,255,255,0.07); }
+
+.scrollIndicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: fadeIn 1s ease 1s both; }
+.scrollDot { width: 6px; height: 6px; border-radius: 50%; background: #64748b; margin: 0 auto; animation: scrollBounce 2s ease-in-out infinite; }
+
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scrollBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(12px); } }

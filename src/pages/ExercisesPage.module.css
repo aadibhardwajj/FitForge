@@ -1,0 +1,73 @@
+.section { padding: 110px 0 80px; min-height: 100vh; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+.header { margin-bottom: 40px; }
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: #94a3b8;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 28px;
+}
+.backBtn:hover { background: rgba(255,255,255,0.1); color: #f1f5f9; }
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.muscleIcon { font-size: 56px; line-height: 1; }
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #f1f5f9;
+}
+.subtitle { font-size: 15px; color: #94a3b8; margin-top: 4px; }
+
+.filterRow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.filterLabel { font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; }
+.filterBtn {
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.04);
+  color: #94a3b8;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.filterBtn:hover { background: rgba(255,255,255,0.07); color: #f1f5f9; }
+.filterBtn.active {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  border-color: transparent;
+  color: #fff;
+}
+
+.resultCount { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+.resultCount strong { color: #94a3b8; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+
+.empty { text-align: center; padding: 80px 20px; color: #64748b; }
+.emptyIcon { font-size: 52px; display: block; margin-bottom: 16px; }
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .container { padding: 0 16px; }
+  .section { padding: 90px 0 60px; }
+}

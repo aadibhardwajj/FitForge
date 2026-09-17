@@ -1,0 +1,84 @@
+.card {
+  position: relative;
+  background: #111827;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 24px;
+  padding: 32px 28px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardIn 0.5s ease both;
+  outline: none;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.card:hover {
+  border-color: var(--card-color);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--card-color);
+}
+.card:focus-visible {
+  outline: 2px solid var(--card-color);
+  outline-offset: 2px;
+}
+.glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(circle at 50% 0%, var(--card-color) 0%, transparent 70%);
+}
+.card:hover .glow { opacity: 0.14; }
+
+.icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+.card:hover .icon { transform: scale(1.1) rotate(-5deg); }
+
+.name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 6px;
+}
+.count { font-size: 13px; color: #64748b; font-weight: 500; margin-bottom: 16px; }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--card-color);
+  transition: background 0.3s;
+}
+.card:hover .tag { background: rgba(255,255,255,0.09); }
+
+.arrow {
+  position: absolute;
+  top: 24px; right: 24px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  transition: all 0.3s;
+}
+.card:hover .arrow {
+  background: var(--card-color);
+  border-color: var(--card-color);
+  color: #fff;
+  transform: rotate(45deg);
+}
