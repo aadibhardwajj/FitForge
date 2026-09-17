@@ -1,3 +1,4 @@
+import { useAuth } from '../context/AuthContext';
 import styles from './ExerciseCard.module.css';
 
 const diffColors = {
@@ -6,13 +7,24 @@ const diffColors = {
   advanced:     { bg: 'rgba(239,68,68,0.12)',    color: '#f87171', border: 'rgba(239,68,68,0.2)'  },
 };
 
-export default function ExerciseCard({ exercise, index, onOpen }) {
+export default function ExerciseCard({ exercise, index, onOpen, onRequireAuth }) {
+  const { isFavorite, toggleFavorite, currentUser } = useAuth();
   const diff = diffColors[exercise.difficulty] || diffColors.beginner;
+  const favored = isFavorite(exercise.name);
+
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation();
+    if (!currentUser) {
+      if (onRequireAuth) onRequireAuth();
+      return;
+    }
+    toggleFavorite(exercise.name);
+  };
 
   return (
     <div
       className={styles.card}
-      style={{ animationDelay: `${index * 0.07}s` }}
+      style={{ animationDelay: `${index * 0.05}s` }}
       onClick={() => onOpen(exercise)}
       tabIndex={0}
       role="button"
@@ -23,12 +35,25 @@ export default function ExerciseCard({ exercise, index, onOpen }) {
           <div className={styles.name}>{exercise.name}</div>
           <div className={styles.sub}>{exercise.equipment}</div>
         </div>
-        <span
-          className={styles.badge}
-          style={{ background: diff.bg, color: diff.color, border: `1px solid ${diff.border}` }}
-        >
-          {exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}
-        </span>
+
+        <div className={styles.headerActions}>
+          <span
+            className={styles.badge}
+            style={{ background: diff.bg, color: diff.color, border: `1px solid ${diff.border}` }}
+          >
+            {exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}
+          </span>
+
+          <button
+            type="button"
+            className={`${styles.favBtn} ${favored ? styles.activeFav : ''}`}
+            onClick={handleFavoriteClick}
+            title={favored ? 'Remove from saved' : 'Save to favorites'}
+            aria-label={favored ? 'Remove from saved' : 'Save to favorites'}
+          >
+            {favored ? '❤️' : '🤍'}
+          </button>
+        </div>
       </div>
 
       <div className={styles.body}>

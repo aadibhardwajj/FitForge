@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
 import styles from './ExerciseModal.module.css';
 
 const diffColors = {
@@ -7,7 +8,9 @@ const diffColors = {
   advanced:     { bg: 'rgba(239,68,68,0.12)',    color: '#f87171', border: 'rgba(239,68,68,0.2)'  },
 };
 
-export default function ExerciseModal({ exercise, muscle, onClose }) {
+export default function ExerciseModal({ exercise, muscle, onClose, onRequireAuth }) {
+  const { isFavorite, toggleFavorite, currentUser } = useAuth();
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
@@ -20,6 +23,15 @@ export default function ExerciseModal({ exercise, muscle, onClose }) {
 
   if (!exercise) return null;
   const diff = diffColors[exercise.difficulty] || diffColors.beginner;
+  const favored = isFavorite(exercise.name);
+
+  const handleFavoriteClick = () => {
+    if (!currentUser) {
+      if (onRequireAuth) onRequireAuth();
+      return;
+    }
+    toggleFavorite(exercise.name);
+  };
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -30,8 +42,19 @@ export default function ExerciseModal({ exercise, muscle, onClose }) {
           {/* Hero */}
           <div className={styles.hero}>
             <span className={styles.muscleIcon}>{muscle?.icon}</span>
-            <div>
-              <h2 className={styles.title}>{exercise.name}</h2>
+            <div className={styles.heroMain}>
+              <div className={styles.titleRow}>
+                <h2 className={styles.title}>{exercise.name}</h2>
+                <button
+                  type="button"
+                  className={`${styles.modalFavBtn} ${favored ? styles.activeModalFav : ''}`}
+                  onClick={handleFavoriteClick}
+                  title={favored ? 'Saved to routine' : 'Save exercise'}
+                >
+                  {favored ? '❤️ Saved' : '🤍 Save'}
+                </button>
+              </div>
+
               <div className={styles.badges}>
                 <span className={styles.badge} style={{ background: diff.bg, color: diff.color, border: `1px solid ${diff.border}` }}>
                   {exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}

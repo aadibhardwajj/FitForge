@@ -6,7 +6,7 @@ import styles from './ExercisesPage.module.css';
 
 const FILTERS = ['all', 'beginner', 'intermediate', 'advanced'];
 
-export default function ExercisesPage({ muscle, onBack }) {
+export default function ExercisesPage({ muscle, onBack, onRequireAuth }) {
   const [filter, setFilter] = useState('all');
   const [selectedExercise, setSelectedExercise] = useState(null);
 
@@ -63,7 +63,13 @@ export default function ExercisesPage({ muscle, onBack }) {
         ) : (
           <div className={styles.grid}>
             {filtered.map((ex, i) => (
-              <ExerciseCard key={ex.name} exercise={ex} index={i} onOpen={setSelectedExercise} />
+              <ExerciseCard
+                key={ex.name}
+                exercise={ex}
+                index={i}
+                onOpen={setSelectedExercise}
+                onRequireAuth={onRequireAuth}
+              />
             ))}
           </div>
         )}
@@ -75,6 +81,7 @@ export default function ExercisesPage({ muscle, onBack }) {
           exercise={selectedExercise}
           muscle={muscle}
           onClose={() => setSelectedExercise(null)}
+          onRequireAuth={onRequireAuth}
         />
       )}
     </section>

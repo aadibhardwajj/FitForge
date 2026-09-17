@@ -58,13 +58,47 @@
   border-bottom: 1px solid rgba(255,255,255,0.07);
   margin-bottom: 28px;
 }
+.heroMain { flex: 1; }
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
 .muscleIcon { font-size: 56px; line-height: 1; }
 .title {
   font-family: 'Outfit', sans-serif;
   font-size: 26px;
   font-weight: 800;
   color: #f1f5f9;
-  margin-bottom: 10px;
+  margin: 0;
+}
+.modalFavBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.modalFavBtn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+  transform: translateY(-1px);
+}
+.activeModalFav {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.45);
+  color: #fca5a5;
 }
 .badges { display: flex; gap: 8px; flex-wrap: wrap; }
 .badge {

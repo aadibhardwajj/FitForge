@@ -6,10 +6,10 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .navbar.scrolled {
-  background: rgba(8,12,20,0.9);
+  background: rgba(8,12,20,0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   padding: 10px 0;
 }
 .inner {
@@ -18,7 +18,7 @@
   padding: 0 32px;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 32px;
 }
 .logo {
   display: flex;
@@ -39,7 +39,12 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.links { display: flex; gap: 32px; margin-left: auto; }
+.links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: auto;
+}
 .link {
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
@@ -50,6 +55,9 @@
   cursor: pointer;
   transition: color 0.3s;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 .link::after {
   content: '';
@@ -62,20 +70,120 @@
 }
 .link:hover { color: #f1f5f9; }
 .link:hover::after { width: 100%; }
-.cta {
+
+.favBadge {
+  background: linear-gradient(135deg, #ef4444, #ec4899);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+}
+
+.authArea {
+  display: flex;
+  align-items: center;
+}
+
+.authButtons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.signInBtn {
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
   font-size: 14px;
-  padding: 10px 24px;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.signInBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.signUpBtn {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 20px;
   background: linear-gradient(135deg, #3b82f6, #06b6d4);
   border: none;
   border-radius: 50px;
   color: #fff;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.25s ease;
   white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
-.cta:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(59,130,246,0.4); }
+
+.signUpBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
+
+.profilePill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 14px 5px 6px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profilePill:hover {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: #3b82f6;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.25);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileName {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #f1f5f9;
+}
+
+.goalTag {
+  font-size: 11px;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .goalTag { display: none; }
+  .links { gap: 16px; }
+}
 
 @media (max-width: 640px) {
   .links { display: none; }
