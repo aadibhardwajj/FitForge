@@ -34,6 +34,11 @@ export default function Navbar({ onNavigate, onOpenAuth, onOpenProfile }) {
         </button>
 
         <div className={styles.links}>
+          {currentUser && (
+            <button className={styles.link} onClick={() => onNavigate('dashboard')}>
+              📊 Dashboard
+            </button>
+          )}
           <button className={styles.link} onClick={() => onNavigate('muscles')}>
             Muscles
           </button>

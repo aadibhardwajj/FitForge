@@ -5,12 +5,13 @@ import Hero from './components/Hero';
 import MusclesPage from './pages/MusclesPage';
 import ExercisesPage from './pages/ExercisesPage';
 import FavoritesPage from './pages/FavoritesPage';
+import DashboardPage from './pages/DashboardPage';
 import TipsSection from './components/TipsSection';
 import AuthModal from './components/AuthModal';
 import ProfileModal from './components/ProfileModal';
 import styles from './App.module.css';
 
-// Views: 'home' | 'muscles' | 'exercises' | 'favorites'
+// Views: 'home' | 'muscles' | 'exercises' | 'favorites' | 'dashboard'
 function MainContent() {
   const [view, setView] = useState('home');
   const [selectedMuscle, setSelectedMuscle] = useState(null);
@@ -22,6 +23,10 @@ function MainContent() {
   const handleNavigate = useCallback((target) => {
     if (target === 'home') {
       setView('home');
+      setSelectedMuscle(null);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (target === 'dashboard') {
+      setView('dashboard');
       setSelectedMuscle(null);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (target === 'muscles') {
@@ -76,6 +81,20 @@ function MainContent() {
           <Hero onStart={() => handleNavigate('muscles')} />
           <MusclesPage onSelect={handleSelectMuscle} />
           <TipsSection />
+          <Footer />
+        </>
+      )}
+
+      {view === 'dashboard' && (
+        <>
+          {currentUser ? (
+            <DashboardPage
+              onExploreMuscles={() => handleNavigate('muscles')}
+              onViewFavorites={() => handleNavigate('favorites')}
+            />
+          ) : (
+            <MusclesPage onSelect={handleSelectMuscle} />
+          )}
           <Footer />
         </>
       )}

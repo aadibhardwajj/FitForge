@@ -6,14 +6,22 @@ FitForge is a modern, responsive fitness web application built with **React** an
 
 ## 🚀 Features
 
+- **📊 Personal Fitness Dashboard**:
+  - **🥗 Calorie Tracker**: Real-time energy target, consumed vs. remaining kcal, and daily meal logging.
+  - **🏋️ Workout Tracker**: Log sessions with duration, type, and calories burned.
+  - **⚖️ Bodyweight Tracker**: Track current vs. target weight and chronological progress history.
+  - **👟 Daily Steps & Activity**: Progress towards 10,000 steps with distance calculation (km) and quick "+ Add Steps" chips.
+- **🔐 User Authentication**:
+  - Registration & Sign In with custom fitness goals and experience levels.
+  - Per-user data isolation and persistence in local storage.
 - **💪 10 Targeted Muscle Groups**:
   - Chest, Biceps, Triceps, Back, Shoulders, Legs (Quads & Hamstrings), Abs & Core, Calves, Forearms, and Glutes.
 - **🏋️ 80+ Curated Exercises**:
   - Detailed guides with recommended sets, reps, rest periods, equipment requirements, and pro execution tips.
+- **❤️ Saved Workout Routines**:
+  - Bookmark favorite exercises for quick routine planning.
 - **🔍 Real-Time Search & Filtering**:
   - Instantly search muscle groups and filter exercises by difficulty (*Beginner, Intermediate, Advanced*).
-- **📖 Interactive Exercise Modal**:
-  - Step-by-step form walkthroughs and tips for maximum muscle engagement.
 - **✨ Premium UI / UX**:
   - Modern dark aesthetics, glassmorphism, responsive grid layouts, and smooth animations using CSS Modules.
 
